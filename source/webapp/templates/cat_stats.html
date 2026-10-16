@@ -1,0 +1,45 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Cat Stats</title>
+</head>
+<body>
+
+<div style="display: flex; gap: 20px;">
+    <div><img src={% static cat.avatar %} alt="cat" style="width: 240px; height: auto;"></div>
+    <div>
+        <p>Кот - {{ cat.name }}</p>
+        <p>Возраст - {{ cat.age }}</p>
+        <p>Уровень счастья - {{ cat.happiness }}</p>
+        <p>Уровень сытости - {{ cat.fullness }}</p>
+    </div>
+</div>
+
+<form action="/cat_stats/" method="POST">
+    {% csrf_token %}
+
+    <input type="hidden" name="name" value="{{ cat.name }}">
+    <input type="hidden" name="happiness" value="{{ cat.happiness }}">
+    <input type="hidden" name="fullness" value="{{ cat.fullness }}">
+    <input type="hidden" name="is_sleeping" value="{{ cat.is_sleeping }}">
+    
+    
+    
+    <select name="action" required>
+        <option value="" disabled selected>выберите действие</option>
+        
+        <option value="feed">покормить кота</option>
+        <option value="play">поиграть с котом</option>
+        <option value="sleep">уложить спать кота</option>
+    </select>
+    <br>
+    <input type="submit" value="подтвердить">
+    
+</form>
+
+
+
+</body>
+</html>

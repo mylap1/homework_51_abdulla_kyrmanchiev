@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Main</title>
+</head>
+<body>
+
+<h3>Вас приветствует симулятор кота<br>для начала введите имя кота</h3>
+
+<form action="/cat_stats/" method="POST">
+    {% csrf_token %}
+    <input type="text" name="name" placeholder="введите имя кота" required>
+    <br>
+    <input type="submit" value="создать">
+</form>
+
+</body>
+</html>
